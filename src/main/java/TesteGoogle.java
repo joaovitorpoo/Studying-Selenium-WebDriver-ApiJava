@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.*;
@@ -13,12 +12,12 @@ public class TesteGoogle {
 		// ----------------- DEFININDO DRIVER DO NAVEGADOR ------------------------------------------------------
 		
 		// FIREFOX 
-		System.setProperty("webdriver.gecko.driver", "../Studying-Selenium-WebDriver-ApiJava/geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
+		//WebDriver driver = new FirefoxDriver();
 		
 		// GOOGLE CHROME
-		// System.setProperty("webdriver.chrome.driver", "../Studying-Selenium-WebDriver-ApiJava/chromedriver.exe");
-		// WebDriver driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/resources/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
 		
 		driver.get("https://www.google.com.br/");
 		Assert.assertEquals("Google", driver.getTitle());
