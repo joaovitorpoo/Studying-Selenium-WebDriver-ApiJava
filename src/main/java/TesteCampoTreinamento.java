@@ -120,4 +120,19 @@ public class TesteCampoTreinamento {
 		
 		driver.quit();
 	}
+	
+	@Test 
+	public void testeBotao() {
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("file:///"+System.getProperty("user.dir")+"/src/main/resources/componentes.html");
+		
+		// Criando objeto do Botao
+		WebElement botao = driver.findElement(By.id("buttonSimple"));
+		botao.click();
+		
+		Assert.assertEquals("Obrigado!", botao.getAttribute("value"));
+		
+		driver.quit();
+	}
 }
