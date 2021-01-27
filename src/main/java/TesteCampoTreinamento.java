@@ -25,4 +25,24 @@ public class TesteCampoTreinamento {
 		Assert.assertEquals("testeeeeeeee\n\n\ntesteeeeeeeee\n\n\ntesteeeeeeeee", driver.findElement(By.id("elementosForm:sugestoes")).getAttribute("value"));
 		driver.quit();
 	}
+	
+	@Test 
+	public void testeRadio() {
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("file:///"+System.getProperty("user.dir")+"/src/main/resources/componentes.html");
+		driver.findElement(By.id("elementosForm:sexo:0")).click();
+		Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
+		driver.quit();
+	}
+	
+	@Test 
+	public void testeCheckBox() {
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("file:///"+System.getProperty("user.dir")+"/src/main/resources/componentes.html");
+		driver.findElement(By.id("elementosForm:comidaFavorita:2")).click();
+		Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:2")).isSelected());
+		driver.quit();
+	}
 }
