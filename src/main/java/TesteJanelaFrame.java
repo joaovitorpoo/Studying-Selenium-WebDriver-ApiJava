@@ -4,6 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TesteJanelaFrame {
@@ -28,6 +29,21 @@ public class TesteJanelaFrame {
 		driver.findElement(By.id("elementosForm:nome")).sendKeys(msg);
 		
 		driver.quit();
+	}
+	
+	@Test
+	public void deveInteragirComFrameEscondido(){
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		DSL dsl = new DSL(driver);
+		
+		WebElement frame = driver.findElement(By.id("frame2"));
+		dsl.executarJS("window.scrollBy(0, arguments[0])", frame.getLocation().y);
+		dsl.entrarFrame("frame2");
+		dsl.clicarBotao("frameButton");
+		String msg = dsl.alertaObterTextoEAceita();
+		Assert.assertEquals("Frame OK!", msg);
 	}
 	
 	@Test

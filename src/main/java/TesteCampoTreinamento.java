@@ -3,6 +3,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -158,5 +159,20 @@ public class TesteCampoTreinamento {
 		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", driver.findElement(By.className("facilAchar")).getText());
 		
 		driver.quit();
+	}
+	
+	@Test
+	public void testJavascript(){
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("alert('Testando js via selenium')");
+		js.executeScript("document.getElementById('elementosForm:nome').value = 'Escrito via js'");
+		js.executeScript("document.getElementById('elementosForm:sobrenome').type = 'radio'");
+		
+		WebElement element = driver.findElement(By.id("elementosForm:nome"));
+		js.executeScript("arguments[0].style.border = arguments[1]", element, "solid 4px red");
 	}
 }
