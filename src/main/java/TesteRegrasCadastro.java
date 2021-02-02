@@ -9,15 +9,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import static br.ce.wcaquino.core.DriverFactory.getDriver;
+
+import br.ce.wcaquino.core.DSL;
+import br.ce.wcaquino.core.DriverFactory;
 
 @RunWith(Parameterized.class)
 public class TesteRegrasCadastro {
 
-	private WebDriver driver;
 	private DSL dsl;
-	private CampoTreinamentoPage page;
+	private CampoTreinamentoPage page = new CampoTreinamentoPage();
 	
 	@Parameter
 	public String nome;
@@ -35,16 +36,13 @@ public class TesteRegrasCadastro {
 
 	@Before
 	public void inicializa(){
-		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/main/resources/geckodriver.exe");
-		driver = new FirefoxDriver();
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
-		page = new CampoTreinamentoPage(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 	
 	@After
 	public void finaliza(){
-		driver.quit();
+		DriverFactory.killDriver(); 
 	}
 	
 	@Parameters

@@ -1,12 +1,8 @@
-import org.openqa.selenium.WebDriver;
+import br.ce.wcaquino.core.DSL;
 
 public class CampoTreinamentoPage {
 	
-	private DSL dsl;
-	
-	public CampoTreinamentoPage(WebDriver driver) {
-		dsl = new DSL(driver);
-	}
+	private DSL dsl = new DSL();
 
 	public void setNome(String nome) {
 		dsl.escrever("elementosForm:nome", nome);
