@@ -43,11 +43,6 @@ public class TesteRegrasCadastro extends BaseTest {
 		dsl = new DSL();
 	}
 	
-	@After
-	public void finaliza(){
-		DriverFactory.killDriver(); 
-	}
-	
 	@Parameters
 	public static Collection<Object[]> getCollection(){
 		return Arrays.asList(new Object[][] {
