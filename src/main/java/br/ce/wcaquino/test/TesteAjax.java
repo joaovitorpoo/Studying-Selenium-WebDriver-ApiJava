@@ -1,30 +1,22 @@
-import static br.ce.wcaquino.core.DriverFactory.getDriver;
+package br.ce.wcaquino.test;
 
-import org.junit.After;
+import static br.ce.wcaquino.core.DriverFactory.getDriver;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import br.ce.wcaquino.core.BaseTest;
 import br.ce.wcaquino.core.DSL;
-import br.ce.wcaquino.core.DriverFactory;
 
-public class TesteAjax {
+public class TesteAjax extends BaseTest {
 	
 	private DSL dsl = new DSL();
 
 	@Before
 	public void inicializa(){
 		getDriver().get("https://www.primefaces.org/showcase/ui/ajax/basic.xhtml");
-	}
-	
-	@After
-	public void finaliza(){
-		DriverFactory.killDriver();
 	}
 
 	@Test

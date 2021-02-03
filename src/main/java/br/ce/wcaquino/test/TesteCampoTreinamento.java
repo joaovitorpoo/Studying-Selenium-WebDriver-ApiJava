@@ -1,3 +1,4 @@
+package br.ce.wcaquino.test;
 import java.util.List;
 
 import org.junit.Assert;

@@ -1,3 +1,5 @@
+package br.ce.wcaquino.test;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -10,12 +12,13 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import static br.ce.wcaquino.core.DriverFactory.getDriver;
-
+import br.ce.wcaquino.core.BaseTest;
 import br.ce.wcaquino.core.DSL;
 import br.ce.wcaquino.core.DriverFactory;
+import br.ce.wcaquino.page.CampoTreinamentoPage;
 
 @RunWith(Parameterized.class)
-public class TesteRegrasCadastro {
+public class TesteRegrasCadastro extends BaseTest {
 
 	private DSL dsl;
 	private CampoTreinamentoPage page = new CampoTreinamentoPage();

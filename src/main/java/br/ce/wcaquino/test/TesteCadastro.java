@@ -1,12 +1,16 @@
+package br.ce.wcaquino.test;
+
 import static br.ce.wcaquino.core.DriverFactory.getDriver;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import br.ce.wcaquino.core.BaseTest;
 import br.ce.wcaquino.core.DSL;
 import br.ce.wcaquino.core.DriverFactory;
+import br.ce.wcaquino.page.CampoTreinamentoPage;
 
-public class TesteCadastro {
+public class TesteCadastro extends BaseTest {
 	
 	private DSL dsl = new DSL();
 	private CampoTreinamentoPage page = new CampoTreinamentoPage();
@@ -14,11 +18,6 @@ public class TesteCadastro {
 	@Before
 	public void inicializar() {
 		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-	}
-	
-	@After
-	public void finalizar() {
-		DriverFactory.killDriver(); 
 	}
 	
 	@Test

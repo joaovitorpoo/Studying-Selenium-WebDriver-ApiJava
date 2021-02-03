@@ -1,3 +1,5 @@
+package br.ce.wcaquino.test;
+
 import static br.ce.wcaquino.core.DriverFactory.getDriver;
 import org.junit.After;
 import org.junit.Assert;
@@ -7,21 +9,17 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import br.ce.wcaquino.core.BaseTest;
 import br.ce.wcaquino.core.DSL;
 import br.ce.wcaquino.core.DriverFactory;
 
-public class TesteJanelaFrame {
+public class TesteJanelaFrame extends BaseTest {
 	
 	private DSL dsl = new DSL();
 	
 	@Before
 	public void inicializa(){
 		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-	}
-	
-	@After
-	public void finaliza(){
-		DriverFactory.killDriver(); 
 	}
 	
 	@Test

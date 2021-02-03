@@ -1,8 +1,8 @@
-import br.ce.wcaquino.core.DSL;
+package br.ce.wcaquino.page;
 
-public class CampoTreinamentoPage {
-	
-	private DSL dsl = new DSL();
+import br.ce.wcaquino.core.BasePage;
+
+public class CampoTreinamentoPage extends BasePage {
 
 	public void setNome(String nome) {
 		dsl.escrever("elementosForm:nome", nome);
